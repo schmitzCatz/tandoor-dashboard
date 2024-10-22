@@ -1,0 +1,11 @@
+### GET today`s meal
+GET https://kitchen.purgatorio.cc/api/meal-plan/?from=2024-10-18&to=2024-10-18
+Authorization: Bearer {{tandoor.token}}
+Content-Type: Application/Json
+
+### GET recipe 1
+GET https://kitchen.purgatorio.cc/api/recipe/1
+Authorization: Bearer {{tandoor.token}}
+Content-Type: Application/Json
+
+
