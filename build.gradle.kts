@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "net.octosystems.smarthome"
-version = "0.0.2"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
@@ -50,7 +50,6 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<BootBuildImage> {
     imageName.set("ghcr.io/schmitzcatz/${project.name}:${project.version}")
-    publish.set(System.getenv("GH_TOKEN") != null)
     environment.set(
         mapOf(
             "BP_OCI_AUTHORS" to "Oliver Schmitz",
@@ -75,9 +74,12 @@ tasks.withType<BootBuildImage> {
             "gcr.io/paketo-buildpacks/image-labels"
         )
     )
+
+    publish.set(true)
     docker {
         publishRegistry {
-            token.set(System.getenv("GH_TOKEN"))
+            username.set("${System.getenv("docker.username")}")
+            password.set("${System.getenv("docker.password")}")
         }
     }
 }
@@ -87,6 +89,6 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
