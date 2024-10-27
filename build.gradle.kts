@@ -61,8 +61,6 @@ tasks.withType<BootBuildImage> {
             "BP_OCI_TITLE" to "Tandoor Dashboard",
             "BP_OCI_URL" to "https://github.com/schmitzCatz/tandoor-dashboard",
             "BP_OCI_VENDOR" to "Oliver Schmitz",
-            "BP_OCI_REF_NAME" to "",
-            "BP_OCI_REVISION" to "",
             "BP_OCI_VERSION" to "${project.version}"
         )
     )
@@ -79,7 +77,6 @@ tasks.withType<BootBuildImage> {
     publish.set(true)
     docker {
         publishRegistry {
-            username.set(System.getenv("GITHUB_USER"))
             token.set(System.getenv("GITHUB_TOKEN"))
         }
     }

@@ -26,4 +26,12 @@ jobs:
       - name: 🔧 Fix Gradle Permissions
         run: chmod +x ./gradlew
       - name: 🐘 Build with Gradle
-        run: ./gradlew bootBuildImage -DGITHUB_TOKEN=${{secrets.GITHUB_TOKEN}} -DGITHUB_USER=${{github.actor}}
+        run: ./gradlew bootJar
+      - name: 🚀 Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: ./CHANGELOG.md
+          files: |
+            ./build/libs/*.jar
+            ./LICENSE
