@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: 🧑‍💻 Checkout
         uses: actions/checkout@v4
-      - name: ☕ Set up JDK ${{JAVA_VERSION}}
+      - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v4
         with:
-          java-version: ${{JAVA_VERSION}}
+          java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
         uses: gradle/actions/setup-gradle@v4
