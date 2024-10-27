@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.targets.js.npm.fromSrcPackageJson
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import java.time.LocalDateTime
@@ -40,13 +41,23 @@ dependencies {
 springBoot {
     buildInfo()
 }
+tasks.register<Copy>("dist") {
+    dependsOn("bootJar")
+    from(layout.buildDirectory.dir("libs"),"./LICENSE", "CHANGELOG.md")
+    into(layout.buildDirectory.dir("dist"))
+}
+tasks.register<Zip>("distZip") {
+    dependsOn("bootJar")
+    archiveFileName = "${project.name}.zip"
+    destinationDirectory = layout.buildDirectory.dir("dist")
+    from(layout.buildDirectory.dir("libs"),"./LICENSE", "CHANGELOG.md")
+}
 
 tasks.withType<KotlinCompile> {
     compilerOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
     }
 }
-
 
 tasks.withType<BootBuildImage> {
     imageName.set("ghcr.io/schmitzcatz/${project.name}:${project.version}")
@@ -74,12 +85,6 @@ tasks.withType<BootBuildImage> {
             "gcr.io/paketo-buildpacks/image-labels"
         )
     )
-    publish.set(true)
-    docker {
-        publishRegistry {
-            token.set(System.getenv("GITHUB_TOKEN"))
-        }
-    }
 }
 
 
