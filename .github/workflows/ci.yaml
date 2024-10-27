@@ -3,7 +3,10 @@ on: workflow_dispatch
 env:
   JAVA_VERSION: 21
 permissions:
+  contents: read
   packages: write
+  attestations: write
+  id-token: write
 jobs:
   build:
     name: Build
@@ -23,4 +26,4 @@ jobs:
       - name: 🔧 Fix Gradle Permissions
         run: chmod +x ./gradlew
       - name: 🐘 Build with Gradle
-        run: ./gradlew bootBuildImage -x test -DGITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
+        run: ./gradlew bootBuildImage -DGITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
