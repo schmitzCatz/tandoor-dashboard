@@ -79,7 +79,8 @@ tasks.withType<BootBuildImage> {
     publish.set(true)
     docker {
         publishRegistry {
-            token.set(System.getenv("GITHUB_TOKEN"))
+            username.set(System.getenv("GITHUB_USER"))
+            password.set(System.getenv("GITHUB_TOKEN"))
         }
     }
 }

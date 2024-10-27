@@ -26,4 +26,4 @@ jobs:
       - name: 🔧 Fix Gradle Permissions
         run: chmod +x ./gradlew
       - name: 🐘 Build with Gradle
-        run: ./gradlew bootBuildImage -DGITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
+        run: ./gradlew bootBuildImage -DGITHUB_TOKEN=${{secrets.GITHUB_TOKEN}} -DGITHUB_USER=${{github.actor}}
