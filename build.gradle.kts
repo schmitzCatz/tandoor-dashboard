@@ -61,6 +61,8 @@ tasks.withType<BootBuildImage> {
             "BP_OCI_TITLE" to "Tandoor Dashboard",
             "BP_OCI_URL" to "https://github.com/schmitzCatz/tandoor-dashboard",
             "BP_OCI_VENDOR" to "Oliver Schmitz",
+            "BP_OCI_REF_NAME" to "",
+            "BP_OCI_REVISION" to "",
             "BP_OCI_VERSION" to "${project.version}"
         )
     )
