@@ -80,7 +80,7 @@ tasks.withType<BootBuildImage> {
     docker {
         publishRegistry {
             username.set(System.getenv("GITHUB_USER"))
-            password.set(System.getenv("GITHUB_TOKEN"))
+            token.set(System.getenv("GITHUB_TOKEN"))
         }
     }
 }
