@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.targets.js.npm.fromSrcPackageJson
+import com.bmuschko.gradle.docker.tasks.image.DockerSaveImage
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import java.time.LocalDateTime
@@ -10,10 +10,13 @@ plugins {
     id("org.springframework.boot") version "3.3.4"
     id("io.spring.dependency-management") version "1.1.6"
     id("com.gorylenko.gradle-git-properties") version "2.4.2"
+    id("com.bmuschko.docker-remote-api") version "9.4.0"
 }
 
 group = "net.octosystems.smarthome"
 version = "0.0.1"
+
+private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:${project.version}"
 
 repositories {
     mavenCentral()
@@ -41,16 +44,23 @@ dependencies {
 springBoot {
     buildInfo()
 }
+
 tasks.register<Copy>("dist") {
     dependsOn("bootJar")
-    from(layout.buildDirectory.dir("libs"),"./LICENSE", "CHANGELOG.md")
+    from(layout.buildDirectory.dir("libs"), "./LICENSE", "CHANGELOG.md")
     into(layout.buildDirectory.dir("dist"))
 }
 tasks.register<Zip>("distZip") {
     dependsOn("bootJar")
     archiveFileName = "${project.name}.zip"
     destinationDirectory = layout.buildDirectory.dir("dist")
-    from(layout.buildDirectory.dir("libs"),"./LICENSE", "CHANGELOG.md")
+    from(layout.buildDirectory.dir("libs"), "./LICENSE", "CHANGELOG.md")
+}
+tasks.register<DockerSaveImage>("distImage") {
+    dependsOn("bootBuildImage")
+    images.set(listOf(dockerImageName))
+    useCompression.set(true)
+    destFile.set(layout.buildDirectory.file("dist/${project.name}-image.tar.gz"))
 }
 
 tasks.withType<KotlinCompile> {
@@ -60,7 +70,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<BootBuildImage> {
-    imageName.set("ghcr.io/schmitzcatz/${project.name}:${project.version}")
+    imageName.set(dockerImageName)
     environment.set(
         mapOf(
             "BP_OCI_AUTHORS" to "Oliver Schmitz",
@@ -85,6 +95,12 @@ tasks.withType<BootBuildImage> {
             "gcr.io/paketo-buildpacks/image-labels"
         )
     )
+    publish.set(true)
+    docker {
+        publishRegistry {
+            token.set(System.getenv("GITHUB_TOKEN"))
+        }
+    }
 }
 
 
