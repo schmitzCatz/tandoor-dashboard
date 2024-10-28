@@ -6,7 +6,7 @@ on:
 env:
   JAVA_VERSION: 21
 permissions:
-  contents: read
+  contents: write
   packages: write
   attestations: write
   id-token: write
