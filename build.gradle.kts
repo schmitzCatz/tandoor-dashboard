@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "net.octosystems.smarthome"
-version = "0.0.1"
+version = "1.0.0"
 
 private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:${project.version}"
 
