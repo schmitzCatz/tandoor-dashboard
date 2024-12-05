@@ -16,12 +16,12 @@ You are able to run the application without docker if that's what you want to do
 
 ### Without Docker
 
-Make sure you install java 17 runtime environment depending on your operating system.
+Make sure you install java 21 runtime environment depending on your operating system.
 
-Windows: ``winget install -e --id Oracle.JDK.17``  
-Debian: ``sudo apt install openjdk-17-jdk``  
-Arch: ``pacman -S jdk17-openjdk``  
-Mac: ``brew install openjdk@17 ``
+Windows: ``winget install -e --id Oracle.JDK.21``  
+Debian: ``sudo apt install openjdk-21-jdk``  
+Arch: ``pacman -S jdk21-openjdk``  
+Mac: ``brew install openjdk@21 ``
 
 Download the application from releases and run with ``java -jar tandoor-bashboard-0.0.1.jar``
 

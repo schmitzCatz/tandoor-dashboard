@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
 data class Recipe(
-    val id: Long,
     val name: String,
     @JsonSetter(nulls = Nulls.AS_EMPTY)
     val description: String = "",
@@ -17,12 +16,28 @@ data class Recipe(
 ) {
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
     data class Step(
-        val id: Long,
         @JsonSetter(nulls = Nulls.AS_EMPTY)
-        val name: String = "",
-        @JsonSetter(nulls = Nulls.AS_EMPTY)
-        val description: String = "",
-        @JsonSetter(nulls = Nulls.AS_EMPTY)
-        val instructionsMarkdown: String
-    )
+        val instructionsMarkdown: String,
+        val ingredients: List<Ingredient> = emptyList()
+    ) {
+        @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
+        data class Ingredient(
+            @JsonSetter(nulls = Nulls.AS_EMPTY)
+            val amount: String,
+            val unit: UnitOfMeasure,
+            val food: Food?
+        ) {
+            @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
+            data class UnitOfMeasure(
+                @JsonSetter(nulls = Nulls.AS_EMPTY)
+                val name: String
+            )
+
+            @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
+            data class Food(
+                @JsonSetter(nulls = Nulls.AS_EMPTY)
+                val name: String
+            )
+        }
+    }
 }

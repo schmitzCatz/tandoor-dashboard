@@ -1,5 +1,6 @@
 package net.octosystems.smarthome.tandoordashboard.controller
 
+import net.octosystems.smarthome.tandoordashboard.model.RecipeView
 import net.octosystems.smarthome.tandoordashboard.service.TandoorService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -18,7 +19,7 @@ class DashboardController(
         val plan = service.getMealPlan()
 
         if (plan.isNotEmpty()) {
-            val recipes = plan.map { service.getRecipe(it.recipe) }
+            val recipes = plan.map { service.getRecipe(it.recipe) }.map { RecipeView.from(it) }
             model.addAttribute("recipes", recipes)
         }
 
