@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0]
+### Added
+- Added List Of ingredients to recipe
+- Banner.txt
+### Changed
+- Java version from 17 to 21
+
 ## [0.0.1]
 
 ### Added
@@ -19,3 +26,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 [unreleased]: https://github.com/schmitzCatz/tandoor-dashboard/compare/v0.0.1...HEAD
+[1.1.0]: https://github.com/schmitzCatz/tandoor-dashboard/compare/v1.1.0...v0.0.1

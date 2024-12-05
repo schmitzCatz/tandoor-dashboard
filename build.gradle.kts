@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "net.octosystems.smarthome"
-version = "0.0.1"
+version = "1.1.0"
 
 private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:${project.version}"
 private val githubToken = System.getenv("Github.token")
@@ -38,8 +38,7 @@ dependencies {
     testImplementation(kotlin("test-junit5"))
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    compileOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 springBoot {
