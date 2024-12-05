@@ -6,7 +6,7 @@ on:
 env:
   JAVA_VERSION: 21
 permissions:
-  contents: read
+  contents: write
   packages: write
   attestations: write
   id-token: write
@@ -27,7 +27,7 @@ jobs:
       - name: 🔧 Fix Gradle Permissions
         run: chmod +x ./gradlew
       - name: 🐘 Build with Gradle
-        run: ./gradlew bootBuildImage distZip
+        run: ./gradlew bootBuildImage dist distZip
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,15 +36,6 @@ jobs:
         with:
           path: ./build/dist/
           retention-days: 5
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    needs: [build]
-    permissions:
-      contents: write
-    steps:
-      - name: 💾 Download Artifact
-        uses: actions/download-artifact@v4
       - name: 🚀 Release
         uses: softprops/action-gh-release@v2
         with:
