@@ -24,7 +24,7 @@ data class Recipe(
         data class Ingredient(
             @JsonSetter(nulls = Nulls.AS_EMPTY)
             val amount: String,
-            val unit: UnitOfMeasure,
+            val unit: UnitOfMeasure?,
             val food: Food?
         ) {
             @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)

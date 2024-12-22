@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1]
+### Fix
+- Exception Deserializing Empty Values
+
 ## [1.2.0]
 ### Added
 - latest tag for docker image
