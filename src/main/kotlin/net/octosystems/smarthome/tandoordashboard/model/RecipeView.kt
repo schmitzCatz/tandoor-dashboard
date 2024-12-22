@@ -11,7 +11,7 @@ data class RecipeView(
             name = recipe.name,
             image = recipe.image,
             instructions = recipe.steps.joinToString { it.instructionsMarkdown },
-            ingredients = recipe.steps.flatMap { it.ingredients }.map { if(it.food != null) "${it.amount} ${it.unit.name} ${it.food.name}" else ""}
+            ingredients = recipe.steps.flatMap { it.ingredients }.map { if(it.food != null) "${it.amount} ${it.unit?.name} ${it.food.name}" else ""}
         )
     }
 }
