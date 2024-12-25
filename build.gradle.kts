@@ -73,7 +73,7 @@ tasks.withType<BootBuildImage> {
     environment.set(
         mapOf(
             "BP_OCI_AUTHORS" to "Oliver Schmitz",
-            "BP_OCI_CREATED" to "${LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME)}",
+            "BP_OCI_CREATED" to LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME),
             "BP_OCI_DESCRIPTION" to "Simple Web Application to display today's Tandoor Meal",
             "BP_OCI_DOCUMENTATION" to "https://github.com/schmitzCatz/tandoor-dashboard",
             "BP_OCI_LICENSES" to "GNU GPLv3",
@@ -94,7 +94,7 @@ tasks.withType<BootBuildImage> {
             "gcr.io/paketo-buildpacks/image-labels"
         )
     )
-    publish.set(true)
+    publish.set(System.getenv("GITHUB_ACTOR")?.isNotEmpty()?: false)
     tags.set(mutableListOf("v$version", "latest"))
     docker {
         publishRegistry {
