@@ -18,7 +18,14 @@ jobs:
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
-      - name: Generate and submit dependency graph
+      - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{env.JAVA_VERSION}}
+          distribution: temurin
+      - name: 🔧 Fix Gradle Permissions
+        run: chmod +x ./gradlew
+      - name: 🌿 Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@v3
         with:
           build-scan-publish: true
