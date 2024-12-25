@@ -78,7 +78,7 @@ jobs:
     name: 🚀 Release
     runs-on: ubuntu-latest
     needs: [ test, build ]
-    if: github.event_name == 'push' && contains(github.ref, '/heads/main') && contains(github.ref, '/tags/v')
+    if: github.event_name == 'push' && (contains(github.ref, '/heads/main') || contains(github.ref, '/tags/v'))
     steps:
       - name: 🧑‍💻 Checkout
         uses: actions/checkout@v4
