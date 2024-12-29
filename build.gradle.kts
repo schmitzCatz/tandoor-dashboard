@@ -16,7 +16,7 @@ plugins {
 group = "net.octosystems.smarthome"
 version = "1.1.0"
 
-private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:${project.version}
+private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:${project.version}"
 
 repositories {
     mavenCentral()
