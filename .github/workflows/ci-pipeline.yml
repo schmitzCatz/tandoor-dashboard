@@ -84,7 +84,7 @@ jobs:
   dependency-submission:
     name: ⚖️ Dependency Submission
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: startsWith(github.event.ref, 'refs/tags/v')
     steps:
       - name: Checkout project sources
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
