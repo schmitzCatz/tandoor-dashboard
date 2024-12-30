@@ -16,7 +16,7 @@ plugins {
 group = "net.octosystems.smarthome"
 version = "1.2.0"
 
-private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}"
+private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:v${project.version}"
 
 repositories {
     mavenCentral()
@@ -95,7 +95,6 @@ tasks.withType<BootBuildImage> {
         )
     )
     publish.set(System.getenv("GITHUB_ACTOR")?.isNotEmpty()?: false)
-    tags.set(listOf("v${project.version}", "latest"))
     docker {
         publishRegistry {
             username = System.getenv("GITHUB_ACTOR")
