@@ -85,7 +85,7 @@ jobs:
   dependency-submission:
     name: ⚖️ Dependency Submission
     runs-on: ubuntu-24.04
-    if: github.ref == "refs/heads/main"
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4.2.2
