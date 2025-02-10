@@ -28,7 +28,7 @@ jobs:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@0bdd871935719febd78681f197cd39af5b6e16a6 # v4.2.2
+        uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -48,7 +48,7 @@ jobs:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@0bdd871935719febd78681f197cd39af5b6e16a6 # v4.2.2
+        uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -68,7 +68,7 @@ jobs:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@0bdd871935719febd78681f197cd39af5b6e16a6 # v4.2.2
+        uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -95,7 +95,7 @@ jobs:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@0bdd871935719febd78681f197cd39af5b6e16a6 # v4.2.2
+        uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -103,7 +103,7 @@ jobs:
       - name: 🔧 Fix Gradle Permissions
         run: chmod +x ./gradlew
       - name: 🌿 Generate and submit dependency graph
-        uses: gradle/actions/dependency-submission@0bdd871935719febd78681f197cd39af5b6e16a6 # v4.2.2
+        uses: gradle/actions/dependency-submission@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -122,7 +122,7 @@ jobs:
             java-version: ${{env.JAVA_VERSION}}
             distribution: temurin
         - name: ⛑️ Set up Gradle
-          uses: gradle/actions/setup-gradle@0bdd871935719febd78681f197cd39af5b6e16a6 # v4.2.2
+          uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
           with:
             build-scan-publish: true
             build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
