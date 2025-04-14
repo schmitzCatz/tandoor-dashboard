@@ -29,7 +29,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation(kotlin("reflect"))
 
-    runtimeOnly("org.webjars:bootstrap:5.3.3")
+    runtimeOnly("org.webjars:bootstrap:5.3.5")
     runtimeOnly("org.webjars.npm:bootstrap-icons:1.11.3")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 
