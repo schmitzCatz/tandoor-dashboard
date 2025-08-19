@@ -1,5 +1,6 @@
 package net.octosystems.smarthome.tandoordashboard.service
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.http.*
 import org.springframework.util.CollectionUtils
@@ -12,15 +13,18 @@ import kotlin.reflect.KClass
 @DslMarker
 annotation class RequestDslMarker
 
+var log = KotlinLogging.logger {}
+
 @RequestDslMarker
 class RequestBuilder<T : Any> {
 
-    private var headers: HttpHeaders = HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }
+    private var headers: HttpHeaders = HttpHeaders()
+        .apply { contentType = MediaType.APPLICATION_JSON }
+        .apply { accept = listOf(MediaType.ALL) }
     private var uri: URI? = null
     private var method: HttpMethod = HttpMethod.GET
     private var responseType: KClass<T>? = null
     private var queryParameters: MutableMap<String, String> = mutableMapOf()
-    private var contentType: MediaType = MediaType.APPLICATION_JSON
 
     fun uri(uri: String) = apply { this.uri = URI.create(uri) }
     fun auth(username: String, password: String) = apply { headers.setBasicAuth(username, password) }
@@ -29,6 +33,7 @@ class RequestBuilder<T : Any> {
     fun requestMethod(method: HttpMethod) = apply { this.method = method }
     fun responseType(entity: KClass<T>) = apply { this.responseType = entity }
     fun query(block: QueryBuilder.() -> Unit) = queryParameters.putAll(QueryBuilder().apply(block))
+    fun accept(vararg type: MediaType) = apply { headers.accept = type.toList() }
 
     fun execute(): ResponseEntity<T> {
 
@@ -42,11 +47,15 @@ class RequestBuilder<T : Any> {
             ).build().toUri()
         }
 
+        log.debug { "Executing ${this.uri}" }
+        log.debug { "Headers: $headers" }
+        log.debug { "Method: $method" }
+        log.debug { "Result: ${RestTemplateBuilder().build().exchange(uri!!, method, HttpEntity<String>(headers), String::class.java).body}" }
         return RestTemplateBuilder().build().exchange(uri!!, method, HttpEntity<String>(headers), responseType!!.java)
     }
 
     @RequestDslMarker
-    inner class QueryBuilder(val params: MutableMap<String, String> = mutableMapOf()) :
+    class QueryBuilder(val params: MutableMap<String, String> = mutableMapOf()) :
         MutableMap<String, String> by params {
         fun param(name: String, value: Serializable) {
             params[name] = value.toString()
