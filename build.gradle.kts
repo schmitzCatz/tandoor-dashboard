@@ -16,7 +16,7 @@ plugins {
 group = "net.octosystems.smarthome"
 version = "2.0.0"
 
-private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}:${project.version}"
+private val dockerImageName = "ghcr.io/schmitzcatz/${project.name}"
 
 repositories {
     mavenCentral()
@@ -71,6 +71,7 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<BootBuildImage> {
     imageName.set(dockerImageName)
+    tags.set(listOf("latest", "${project.version}"))
     environment.set(
         mapOf(
             "BP_OCI_AUTHORS" to "Oliver Schmitz",
