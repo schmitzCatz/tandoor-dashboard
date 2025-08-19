@@ -92,7 +92,7 @@ tasks.withType<BootBuildImage> {
             "paketo-buildpacks/syft",
             "paketo-buildpacks/executable-jar",
             "paketo-buildpacks/spring-boot",
-            "gcr.io/paketo-buildpacks/image-labels"
+            "docker.io/paketobuildpacks/image-labels"
         )
     )
     publish.set(System.getenv("GITHUB_ACTOR")?.isNotEmpty()?: false)
