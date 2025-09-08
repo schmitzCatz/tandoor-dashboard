@@ -30,7 +30,7 @@ dependencies {
     implementation("io.github.oshai:kotlin-logging-jvm:7.0.13")
     implementation(kotlin("reflect"))
 
-    runtimeOnly("org.webjars:bootstrap:5.3.7")
+    runtimeOnly("org.webjars:bootstrap:5.3.8")
     runtimeOnly("org.webjars.npm:bootstrap-icons:1.13.1")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 
