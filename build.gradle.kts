@@ -5,9 +5,9 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.2.10"
-    id("org.jetbrains.kotlin.plugin.spring") version "2.2.20"
-    id("org.springframework.boot") version "3.5.5"
+    id("org.jetbrains.kotlin.jvm") version "2.2.20"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.2.10"
+    id("org.springframework.boot") version "3.5.6"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.gorylenko.gradle-git-properties") version "2.5.3"
     id("com.bmuschko.docker-remote-api") version "9.4.0"
