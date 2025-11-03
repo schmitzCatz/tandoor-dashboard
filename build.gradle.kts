@@ -10,7 +10,7 @@ plugins {
     id("org.springframework.boot") version "3.5.6"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.gorylenko.gradle-git-properties") version "2.5.3"
-    id("com.bmuschko.docker-remote-api") version "9.4.0"
+    id("com.bmuschko.docker-remote-api") version "10.0.0"
 }
 
 group = "net.octosystems.smarthome"
