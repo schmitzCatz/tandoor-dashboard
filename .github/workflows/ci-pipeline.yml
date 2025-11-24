@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.0
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.0.0
         with:
@@ -41,7 +41,7 @@ jobs:
     needs: [ compile ]
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.0
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.0.0
         with:
@@ -61,7 +61,7 @@ jobs:
     needs: [ test ]
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.0
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.0.0
         with:
@@ -88,7 +88,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.0
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.0.0
         with:
@@ -115,7 +115,7 @@ jobs:
       if: startsWith(github.event.ref, 'refs/tags/v')
       steps:
         - name: Checkout project sources
-          uses: actions/checkout@v5.0.0
+          uses: actions/checkout@v6.0.0
         - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
           uses: actions/setup-java@v5.0.0
           with:
