@@ -9,7 +9,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.spring") version "2.2.21"
     id("org.springframework.boot") version "3.5.6"
     id("io.spring.dependency-management") version "1.1.7"
-    id("com.gorylenko.gradle-git-properties") version "2.5.3"
+    id("com.gorylenko.gradle-git-properties") version "2.5.4"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 }
 
