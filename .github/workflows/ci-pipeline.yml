@@ -76,7 +76,7 @@ jobs:
       - name: 🛠️ Build
         run: gradle dist -x test --scan
       - name: 💾 Upload Artifact
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v7.0.0
         with:
           name: tandoor-dashboard
           path: ./build/dist
