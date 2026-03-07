@@ -4,7 +4,8 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-plugins {
+plugins {   
+    id("org.jetbrains.kotlin.plugin.spring") version "2.3.0"
     id("org.jetbrains.kotlin.jvm") version "2.3.0"
     id("org.jetbrains.kotlin.plugin.spring") version "2.2.21"
     id("org.springframework.boot") version "4.0.2"
