@@ -4,10 +4,11 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.2.20"
+plugins {   
     id("org.jetbrains.kotlin.plugin.spring") version "2.3.0"
-    id("org.springframework.boot") version "3.5.6"
+    id("org.jetbrains.kotlin.jvm") version "2.3.0"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.2.21"
+    id("org.springframework.boot") version "4.0.2"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.gorylenko.gradle-git-properties") version "2.5.4"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
@@ -27,7 +28,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.github.oshai:kotlin-logging-jvm:7.0.13")
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.14")
     implementation(kotlin("reflect"))
 
     runtimeOnly("org.webjars:bootstrap:5.3.8")
