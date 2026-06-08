@@ -21,14 +21,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.2.0
         with:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -41,14 +41,14 @@ jobs:
     needs: [ compile ]
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.2.0
         with:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -61,14 +61,14 @@ jobs:
     needs: [ test ]
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.2.0
         with:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -76,7 +76,7 @@ jobs:
       - name: 🛠️ Build
         run: gradle dist -x test --scan
       - name: 💾 Upload Artifact
-        uses: actions/upload-artifact@v7.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: tandoor-dashboard
           path: ./build/dist
@@ -88,14 +88,14 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
       - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
         uses: actions/setup-java@v5.2.0
         with:
           java-version: ${{env.JAVA_VERSION}}
           distribution: temurin
       - name: ⛑️ Set up Gradle
-        uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -103,7 +103,7 @@ jobs:
       - name: 🔧 Fix Gradle Permissions
         run: chmod +x ./gradlew
       - name: 🌿 Generate and submit dependency graph
-        uses: gradle/actions/dependency-submission@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+        uses: gradle/actions/dependency-submission@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
         with:
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -115,14 +115,14 @@ jobs:
       if: startsWith(github.event.ref, 'refs/tags/v')
       steps:
         - name: Checkout project sources
-          uses: actions/checkout@v6.0.2
+          uses: actions/checkout@v6.0.3
         - name: ☕ Set up JDK ${{env.JAVA_VERSION}}
           uses: actions/setup-java@v5.2.0
           with:
             java-version: ${{env.JAVA_VERSION}}
             distribution: temurin
         - name: ⛑️ Set up Gradle
-          uses: gradle/actions/setup-gradle@39e147cb9de83bb9910b8ef8bd7fff0ee20fcd6f # v6.0.1
+          uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
           with:
             build-scan-publish: true
             build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
@@ -133,7 +133,7 @@ jobs:
             GITHUB_ACTOR: ${{ github.actor }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: 🚀 Release
-          uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
+          uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
           with:
             body_path: ${{ github.workspace }}/CHANGELOG.md
             files: |

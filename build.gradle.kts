@@ -5,9 +5,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {   
-    id("org.jetbrains.kotlin.plugin.spring") version "2.3.20"
-    id("org.jetbrains.kotlin.jvm") version "2.3.21"
-    id("org.jetbrains.kotlin.plugin.spring") version "2.3.20"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.3.21"
+    id("org.jetbrains.kotlin.jvm") version "2.3.21"    
     id("org.springframework.boot") version "4.0.5"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.gorylenko.gradle-git-properties") version "2.5.7"
@@ -28,7 +27,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.github.oshai:kotlin-logging-jvm:8.0.01")
+    implementation("io.github.oshai:kotlin-logging-jvm:8.0.02")
     implementation(kotlin("reflect"))
 
     runtimeOnly("org.webjars:bootstrap:5.3.8")
