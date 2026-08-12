@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter
 
 plugins {
     id("org.springframework.boot") version "4.1.0"
-    id("org.jetbrains.kotlin.plugin.spring") version "2.3.21"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.4.0"
     id("org.jetbrains.kotlin.jvm") version "2.3.21"       
     id("io.spring.dependency-management") version "1.1.7"
-    id("com.gorylenko.gradle-git-properties") version "2.5.7"
+    id("com.gorylenko.gradle-git-properties") version "4.0.1"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 }
 
@@ -27,7 +27,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("io.github.oshai:kotlin-logging-jvm:8.0.02")
+    implementation("io.github.oshai:kotlin-logging-jvm:8.0.4")
     implementation(kotlin("reflect"))
 
     runtimeOnly("org.webjars:bootstrap:5.3.8")
