@@ -31,7 +31,7 @@ dependencies {
     implementation(kotlin("reflect"))
 
     runtimeOnly("org.webjars:bootstrap:5.3.8")
-    runtimeOnly("org.webjars.npm:bootstrap-icons:1.13.1")
+    runtimeOnly("org.webjars.npm:bootstrap-icons:1.13.2")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
