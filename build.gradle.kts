@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 plugins {
     id("org.jetbrains.kotlin.plugin.spring") version "2.4.20" 
     id("org.jetbrains.kotlin.jvm") version "2.4.20"
-    id("org.springframework.boot") version "4.1.1"   
+    id("org.springframework.boot") version "4.1.2"   
     id("io.spring.dependency-management") version "1.1.7"
     id("com.gorylenko.gradle-git-properties") version "4.0.1"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
